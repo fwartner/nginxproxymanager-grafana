@@ -1,5 +1,5 @@
 FROM python:3
-WORKDIR /usr/src/app
+
 RUN pip install --upgrade pip
 RUN pip install geoip2
 RUN pip install influxdb-client
