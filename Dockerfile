@@ -4,12 +4,6 @@ RUN pip install --upgrade pip
 RUN pip install geoip2
 RUN pip install influxdb-client
 
-RUN mkdir -p /root/.config/NPMGRAF
-
-ENV NPMGRAF_HOME=/root/.config/NPMGRAF
-ARG NPMGRAF_HOME=/root/.config/NPMGRAF
-RUN export NPMGRAF_HOME
-
 ## exludeHOMEIps
 ENV HOME_IPS="192.168.0.*\|192.168.10.*"
 ARG HOME_IPS="192.168.0.*\|192.168.10.*"
@@ -28,13 +22,13 @@ ENV INFLUX_ORG=default
 ARG INFLUX_ORG=default
 
 ## Copy files
-COPY Getipinfo.py /root/.config/NPMGRAF/Getipinfo.py
-RUN chmod +x  /root/.config/NPMGRAF/Getipinfo.py
+COPY Getipinfo.py /usr/src/app/Getipinfo.py
+RUN chmod +x  /usr/src/app/Getipinfo.py
 
-COPY sendips.sh /root/.config/NPMGRAF/sendips.sh
-RUN chmod +x  /root/.config/NPMGRAF/sendips.sh
+COPY sendips.sh /usr/src/app/sendips.sh
+RUN chmod +x  /usr/src/app/sendips.sh
 
-COPY start.sh /root/start.sh
-RUN chmod +x  /root/start.sh
+COPY start.sh /usr/src/app/start.sh
+RUN chmod +x  /usr/src/app/start.sh
 
-ENTRYPOINT ["/root/start.sh"]
+ENTRYPOINT ["/usr/src/app/start.sh"]
