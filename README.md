@@ -5,7 +5,7 @@ some good readme is needed :)
 required things you do beforehand
 
 1) create influxdb nginxproxymanagergraf
-2) Create username and password for nginxproxymanagergraf  
+2) Create username and password for nginxproxymanagergraf
 3) get your GeoLite2-City.mmdb google is your friend upload it somewhere where you'll find it
 4) Start the docker container
 5) Add data source into grafana
@@ -18,11 +18,10 @@ docker run --name npmgraf -it
 -v /home/docker/nginx-proxy-manager/data/logs:/logs \
 -v /home/docker/nginx-proxy-manager/GeoLite2-City.mmdb:/GeoLite2-City.mmdb \
 -e HOME_IPS="192.168.0.*\|192.168.10.*" \
--e INFLUX_USER=admin -e INFLUX_PW=password \
--e INFLUX_DB=nginxproxymanagergraf \
--e INFLUX_HOST=192.168.0.189 \
--e INFLUX_PORT=8086 \
-makarai/nginx-proxy-manager-graf
+-e INFLUX_HOST=admin -e INFLUX_TOKEN=my-token \
+-e INFLUX_BUCKET=nginxproxy \
+-e INFLUX_ORG=my_org \
+ghrc.io/fwartner/nginxproxymanager-grafana:latest
 ```
 
 world map
@@ -37,6 +36,6 @@ Obviously I'd appreciate a grafana Wiz to add some things here :) first time i w
 
 
 
-https://github.com/jc21/nginx-proxy-manager  
+https://github.com/jc21/nginx-proxy-manager
 
 ![nginx](https://github.com/ma-karai/nginxproxymanagerGraf/blob/master/Screenshot%202021-02-14%20142221.png?raw=true)
