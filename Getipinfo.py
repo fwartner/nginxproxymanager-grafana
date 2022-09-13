@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 
 import sys
+import geoip2.database
+import socket
 #import geoip2.webservice
 print ('*************************************')
 print (sys.argv[1])
@@ -10,8 +12,6 @@ import geoip2.database
 import socket
 
 print(socket.gethostname())
-
-
 
 reader = geoip2.database.Reader('/GeoLite2-City.mmdb')
 response = reader.city(str(sys.argv[1]))
@@ -26,21 +26,23 @@ Zip = response.postal.code
 IP = str(sys.argv[1])
 Domain = str(sys.argv[2])
 duration = int(sys.argv[3])
-print (Country)
-print (State)
-print (City)
-print (Zip)
-print (Long)
-print (Lat)
-print (ISO)
-print (IP)
+#print ('*************************************')
+#print (sys.argv[1])
+#print (City, State, Zip, Country, ISO)
+#print (Long, Lat)
+#print (Country)
+#print (State)
+#print (City)
+#print (Zip)
+#print (Long)
+#print (Lat)
+#print (ISO)
+#print (IP)
 reader.close()
-
 
 import datetime
 import influxdb
 from influxdb.client.write_api import SYNCHRONOUS
-
 
 ## get env vars and use
 
